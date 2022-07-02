@@ -10,7 +10,7 @@ const SchemaBlog = (sequelize, DataTypes) => {
   });
 
   BlogPost.associate = (models) => {
-    BlogPost.hasMany(models.User,
+    BlogPost.belongsTo(models.User,
       { foreignKey: 'userId', as: 'user' });
     }
 
