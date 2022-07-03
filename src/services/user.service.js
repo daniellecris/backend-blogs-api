@@ -25,4 +25,15 @@ const createUser = async ({
   });
 };
 
-module.exports = { createUser };
+const getUser = () => {
+  const users = User.findAll({
+    attributes: { exclude: ['password'] },
+  });
+
+  return users;
+};
+
+module.exports = { 
+  createUser,
+  getUser,
+};

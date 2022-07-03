@@ -15,4 +15,12 @@ const userController = async (req, res) => {
   return res.status(201).json({ token });
 };
 
-module.exports = { userController };
+const usersController = async (req, res) => {
+  const users = await service.getUser();
+  return res.status(200).json(users);
+};
+
+module.exports = { 
+  userController,
+  usersController,
+};

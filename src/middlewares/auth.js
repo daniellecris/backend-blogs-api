@@ -1,15 +1,19 @@
-const { authenticateToken } = require('../utils/jwt');
+const jwt = require('jsonwebtoken');
 
-const errorAuth = { status: 401, message: 'JWT malformed' };
+const TOKEN_SECRET = process.env.JWT_SECRET;
 
-const authenticateMiddleware = async (req, res, next) => {
+const authenticateToken = (req, res, next) => {
+  try {
     const token = req.headers.authorization;
-    const user = await authenticateToken(token);
-    if (!user) {
-      throw errorAuth;
+    if (!token) {
+      return res.status(401).json({ message: 'Token not found' });
     }
-    res.locals.user = user;
+    const decoded = jwt.verify(token, TOKEN_SECRET);
+    req.user = decoded;
     next();
+  } catch (error) {
+    return res.status(401).json({ message: 'Expired or invalid token' });
+  }
 };
 
-module.exports = authenticateMiddleware;
+module.exports = { authenticateToken };
