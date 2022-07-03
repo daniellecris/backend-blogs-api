@@ -20,7 +20,13 @@ const usersController = async (req, res) => {
   return res.status(200).json(users);
 };
 
+const usersControllerId = async (req, res) => {
+  const users = await service.getUserId(req.params.id);
+  return res.status(200).json(users);
+};
+
 module.exports = { 
   userController,
   usersController,
+  usersControllerId,
 };
