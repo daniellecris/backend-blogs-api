@@ -8,4 +8,12 @@ const categoryController = async (req, res) => {
   return res.status(201).json(categories);
 };
 
-module.exports = { categoryController };
+const categoryControllerAll = async (req, res) => {
+    const categories = await service.getCartegory();
+    return res.status(200).json(categories);
+  };
+
+module.exports = { 
+  categoryController,
+  categoryControllerAll,
+};
