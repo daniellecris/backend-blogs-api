@@ -1,8 +1,8 @@
 'use strict';
 const SchemaPostCategory = (sequelize, DataTypes) => {
   const PostCategory = sequelize.define("PostCategory", {
-    postId: {primaryKey: true, type:DataTypes.INTERGER},
-    categoryId:{primaryKey: true, type:DataTypes.INTERGER}
+    postId: {primaryKey: true, type:DataTypes.INTEGER},
+    categoryId:{primaryKey: true, type:DataTypes.INTEGER}
   });
 
   PostCategory.associate = (models) => {

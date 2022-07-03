@@ -1,7 +1,7 @@
 'use strict';
 const SchemaUser = (sequelize, DataTypes) => {
   const User = sequelize.define("User", {
-    id: {autoIncrement: true, primaryKey: true, type:DataTypes.INTERGER},
+    id: {autoIncrement: true, primaryKey: true, type:DataTypes.INTEGER},
     displayName: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
