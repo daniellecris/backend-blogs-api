@@ -5,4 +5,12 @@ const postController = async (req, res) => {
   return res.status(200).json(post);
 };
 
-module.exports = { postController };
+const postControllerId = async (req, res) => {
+  const postId = await service.getPostId(req.params.id);
+  return res.status(200).json(postId);
+};
+
+module.exports = {
+  postController,
+  postControllerId,
+};
